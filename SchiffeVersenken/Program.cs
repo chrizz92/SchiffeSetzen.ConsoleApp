@@ -15,6 +15,8 @@ namespace SchiffeVersenken
             string input = "";
             do
             {
+                /** //Funktionierende Variante ohne Abstände
+                
                 Console.Write(" ");
                 for (int k = 0; k < width; k++)
                 {
@@ -45,6 +47,7 @@ namespace SchiffeVersenken
                     }
                     Console.WriteLine();
                 }
+                **/
                 Console.Write("Auf welche Position sollen ein Schiffsteil gesetzt werden (z.B. B3)? <Zum Beenden 'E' eingeben>: ");
                 input = Console.ReadLine();
                 if (input.Length==2) 
