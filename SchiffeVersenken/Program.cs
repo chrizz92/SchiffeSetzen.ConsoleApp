@@ -10,11 +10,77 @@ namespace SchiffeVersenken
             int width = 10;
             int columnPosition = -1;
             int rowPosition = -1;
+            char field;
 
             bool[,] gameField = new bool[height, width];
             string input = "";
+            
             do
             {
+                Console.Clear();
+                field = 'A';
+                for (int i = 0; i < (height*2)+2; i++)
+                {
+                    for (int j = 0; j < width; j++)
+                    {
+                        if (j == 0 && i ==0)
+                        {
+                            Console.Write(" ");
+                            for (int k = 0; k < width; k++)
+                            {
+                                Console.Write("  {0} ", k);
+                            }
+                        }
+                        else if (j == 0)
+                        {
+                            if (i % 2 != 0)
+                            {
+                                Console.Write(" ");
+                            }
+                            else
+                            {
+                                Console.Write("{0}",field);
+                                field++;
+                            }
+                        }
+
+                        if(i>0 && i % 2 == 0)
+                        {
+                            if (gameField[(i / 2 - 1), (j)])
+                            {
+                                input = "X";
+                            }
+                            else 
+                            {
+                                input = " ";
+                            }
+
+                            Console.Write("| {0} ",input);
+                        }
+                        else if(i>0 && i % 2 != 0)
+                        {
+                            Console.Write("+---");
+                        }
+
+                    }
+                    if (i > 0)
+                    {
+                        if (i % 2 == 0)
+                        {
+                            Console.WriteLine("|");
+                        }
+                        else
+                        {
+                            Console.WriteLine("+");
+                        }
+
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                    }
+                }
+           
                 /** //Funktionierende Variante ohne Abstände
                 
                 Console.Write(" ");
@@ -142,7 +208,7 @@ namespace SchiffeVersenken
                     Console.WriteLine("Ungültige Eingabe - Bitte Taste drücken um fortzufahren");
                     Console.ReadKey();
                 }
-                Console.Clear();
+                
             } while (input != "E");
         }
     }
